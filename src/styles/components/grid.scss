@@ -1,0 +1,17 @@
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+  gap: 20px;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: solid 2px gray;
+    border-radius: 2rem;
+
+    &__img {
+      height: 6rem;
+    }
+  }
+}

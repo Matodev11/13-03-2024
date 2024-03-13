@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+
 const NotFound = () => {
+  useEffect(() => {
+    document.body.classList.add("notfound-body");
+
+    return () => {
+      document.body.classList.remove("notfound-body");
+    };
+  }, []);
+
   return (
     <>
       <h1 className="notfound__h1">404 ERROR</h1>
