@@ -8,7 +8,9 @@ const NavBar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>Second link</li>
+          <li>
+            <Link to="">Second Link</Link>
+          </li>
         </ul>
       </nav>
     </>
