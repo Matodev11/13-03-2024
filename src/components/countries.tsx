@@ -11,11 +11,26 @@ type CountryType = {
   name: { common: string; official: string };
   region: string;
   currencies: CurrencyDictionary;
+  flags: { png: string };
 };
 
 const Countries = () => {
   const [data, setData] = useState<CountryType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const getCroatia = async () => {
+    await fetch(`https://restcountries.com/v3.1/croatia`)
+      .then((data) => {
+        return data.json();
+      })
+      .then((res) => {
+        setData(res.results);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -27,6 +42,7 @@ const Countries = () => {
       })
       .then((data) => {
         setData(data);
+
         setLoading(false);
       })
       .catch((error) => {
