@@ -1,0 +1,13 @@
+.navbar {
+  background-color: rgba(130, 206, 16, 0.821);
+  padding: 10px 0;
+  text-align: left;
+  font-size: 1.2rem;
+  text-decoration: none;
+
+  &__links {
+    margin: 0 20px;
+    color: white;
+    text-decoration: dotted;
+  }
+}
