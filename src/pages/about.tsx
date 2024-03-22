@@ -1,4 +1,4 @@
-import { useState, useEffect, MouseEvent } from "react";
+import { useState, useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import Select from "react-select";
 
@@ -18,7 +18,7 @@ type ActivePokemonType = {
     front_default: string;
   };
 };
-type ActivePokemonResponseType = ActivePokemonType;
+
 
 //ItemPerPage
 type OptionType = {
@@ -48,9 +48,13 @@ const About = () => {
     )
       .then((data) => {
         return data.json();
+        
       })
       .then((res: PokemonsResponseType) => {
         setData(res.results);
+        console.log(res.results)
+        
+        
       })
       .catch((err) => {
         console.log(err);
@@ -61,9 +65,11 @@ const About = () => {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((data) => {
         return data.json();
+        
       })
       .then((res: ActivePokemonType) => {
         setActivePokemon(res);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -77,9 +83,7 @@ const About = () => {
   return (
     <>
       <div>I'm About</div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ width: 20, height: 20, backgroundColor: "red" }}></div>
-      </div>
+      
       <div>
         <h1>Pokemon</h1>
         <Select

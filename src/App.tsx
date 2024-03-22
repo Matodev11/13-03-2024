@@ -1,10 +1,12 @@
 import Layout from "./components/layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/home";
-import NotFound from "./components/notfound";
-import Countries from "./components/countries";
+import Home from "./pages/home";
+import NotFound from "./pages/notfound";
+import Countries from "./pages/countries";
 import NavBar from "./components/navbar";
-import About from "./components/about";
+import About from "./pages/about";
+import Charizard from "./pages/charizard";
+import Berries from "./pages/berries";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/countries" element={<Countries />}></Route>
           <Route path="/About" element={<About />}></Route>
+          <Route path="/Charizard" element={<Charizard />}></Route>
+          <Route path="/Berries" element={<Berries />}></Route>
         </Routes>
         <Layout>
           <div></div>

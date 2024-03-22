@@ -18,19 +18,7 @@ const Countries = () => {
   const [data, setData] = useState<CountryType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const getCroatia = async () => {
-    await fetch(`https://restcountries.com/v3.1/croatia`)
-      .then((data) => {
-        return data.json();
-      })
-      .then((res) => {
-        setData(res.results);
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -54,9 +42,11 @@ const Countries = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+const croatiaData = data.find((country)=> country.name.common === "Croatia")
+  
   return (
     <>
+   
       <h1>Countries!</h1>
       <div className="Grid">
         {data.slice(0, 6).map((country) => (
@@ -76,8 +66,21 @@ const Countries = () => {
             </p>
             <p>Country region: {country.region}</p>
           </div>
+           
         ))}
+      
       </div>
+      {croatiaData && (
+            <div className="Croatia">
+              <img className="Croatia__flag" src={croatiaData.flags.png} alt={croatiaData.name.common} />
+              <p>{croatiaData.name.common}</p>
+              <p>Regija:{croatiaData.region}</p>
+              <p>Country currency:{Object.keys(croatiaData.currencies).map((key)=>{
+                const croatiaCurrency = croatiaData.currencies[key];
+                return croatiaCurrency.name;
+              })}</p>
+            </div>
+           )}
     </>
   );
 };

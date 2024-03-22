@@ -1,0 +1,17 @@
+.Croatia {
+    border: solid black 2px;
+    display: flex;
+    height: 25rem;
+    width: 25rem;
+    margin-top: 5rem;
+    border-radius: 2rem;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    &__flag {
+        height: auto;
+        width: auto;
+        border-radius: 2rem;
+    }
+}
