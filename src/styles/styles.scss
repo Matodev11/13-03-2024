@@ -4,6 +4,7 @@
 
 body {
   height: 100vh;
+  flex-wrap: wrap;
 }
 
 //imports
@@ -13,3 +14,4 @@ body {
 @import "./components/navbar.scss";
 @import "./components/croatia.scss";
 @import "./components/berry.scss";
+@import "./components/profile.scss";

@@ -7,6 +7,7 @@ import NavBar from "./components/navbar";
 import About from "./pages/about";
 import Charizard from "./pages/charizard";
 import Berries from "./pages/berries";
+import Profile from "./pages/profile";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/About" element={<About />}></Route>
           <Route path="/Charizard" element={<Charizard />}></Route>
           <Route path="/Berries" element={<Berries />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
         </Routes>
         <Layout>
           <div></div>
