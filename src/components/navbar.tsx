@@ -22,7 +22,15 @@ const NavBar = () => {
         <Link className="navbar__links" to="Profile">
           Profile
         </Link>
-        <Link className="navbar__links" to="Practice">Practice </Link>
+        <Link className="navbar__links" to="Practice">
+          Practice{" "}
+        </Link>
+        <Link className="navbar__links" to="Vjezbe">
+          Vjezbe
+        </Link>
+        <Link className="navbar__links" to="Data-types">
+          Data types
+        </Link>
       </nav>
     </>
   );

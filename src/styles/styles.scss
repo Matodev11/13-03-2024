@@ -8,8 +8,23 @@ body {
 }
 
 .btn {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+}
+.vjezbe {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  &__links {
+    text-decoration: none;
+    color: blue;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 //imports
