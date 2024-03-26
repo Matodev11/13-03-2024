@@ -32,6 +32,7 @@ const [input, setInput] = useState<string>("");
 const [count, setCount] = useState(0);
 const [array, setArray] = useState<string[]>(Colors);
 const [object, setObject] = useState<RandomObjecttype>(RandomObject)
+const [booleanArray, setBooleanArray] = useState<boolean[]>([]);
 
 
 const reverseValue = () => {
@@ -79,6 +80,21 @@ setArray(previous => [...previous, NewColor ])
     };
 
 
+       
+        
+      
+      
+        const addBoolean = () => {
+          setBooleanArray(prevArray => [...prevArray, true]); 
+        };
+      
+       
+        const removeBoolean = () => {
+          setBooleanArray(prevArray => prevArray.slice(0, -1)); 
+        }; 
+      
+    
+          
 
 
 
@@ -115,10 +131,22 @@ const img2 = "https://images.wall-art.de/format:webp/q:92/rs:fit:1560:/_img/out/
        })}
       <button className="object__btn" onClick={updateValue}>Click me!</button>
       <button className="object__btn" onClick={reverseValue}>Reverse!</button>
+      <div>
+            <button onClick={addBoolean}>Dodaj boolean</button>
+            <button onClick={removeBoolean}>Ukloni boolean</button>
+            <ul>
+              {/* Prikazujemo svaku boolean vrijednost iz niza */}
+              {booleanArray.map((value, index) => (
+                <li key={index}>{value.toString()}</li>
+              ))}
+            </ul>
+            </div>
+           
         </>
        
     )
 }
+
 
 
 export default Practice;
