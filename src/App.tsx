@@ -8,6 +8,7 @@ import About from "./pages/about";
 import Charizard from "./pages/charizard";
 import Berries from "./pages/berries";
 import Profile from "./pages/profile";
+import Practice from "./pages/practice";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/Charizard" element={<Charizard />}></Route>
           <Route path="/Berries" element={<Berries />}></Route>
           <Route path="/Profile" element={<Profile />}></Route>
+          <Route path="/Practice" element={<Practice/>}></Route>
         </Routes>
         <Layout>
           <div></div>

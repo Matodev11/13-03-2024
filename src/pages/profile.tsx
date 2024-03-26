@@ -7,6 +7,7 @@ const Profile = () => {
   const [name, setName] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
+  
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -23,7 +24,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="main">
+      <main className="main">
         <div className="profile">
           <img className="profile__img" src={imgUrl} alt="profilepic" />
           <h1 className="profile__name">{name}</h1>
@@ -54,7 +55,7 @@ const Profile = () => {
             Add{" "}
           </button>
         </div>
-      </div>
+      </main>
     </>
   );
 };

@@ -7,6 +7,11 @@ body {
   flex-wrap: wrap;
 }
 
+.btn {
+  width: 5rem;
+  height: 5rem;
+}
+
 //imports
 
 @import "./components/notfound.scss";
@@ -15,3 +20,4 @@ body {
 @import "./components/croatia.scss";
 @import "./components/berry.scss";
 @import "./components/profile.scss";
+@import "./components/object.scss";
