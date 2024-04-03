@@ -1,6 +1,6 @@
 import Layout from "./components/layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/navbar";
+
 import Profile from "./pages/profile";
 import About from "./pages/about";
 import Berries from "./pages/berries";
@@ -11,12 +11,14 @@ import Practice from "./pages/practice";
 import NotFound from "./pages/notfound";
 import Vjezbe from "./pages/vjezbe";
 import DataTypes from "./pages/data-types";
+import Gallery from "./pages/gallery";
+
 
 const App = () => {
   return (
     <>
       <Router>
-        <NavBar />
+        
 
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -29,6 +31,7 @@ const App = () => {
           <Route path="/Practice" element={<Practice />}></Route>
           <Route path="/Vjezbe" element={<Vjezbe />}></Route>
           <Route path="/Data-types" element={<DataTypes />}></Route>
+          <Route path="/Gallery" element={<Gallery />}></Route>
         </Routes>
         <Layout>
           <div></div>

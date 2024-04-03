@@ -4,7 +4,6 @@
 
 body {
   height: 100vh;
-  flex-wrap: wrap;
 }
 
 .btn {
@@ -27,6 +26,28 @@ body {
   }
 }
 
+.navbar__home {
+  position: absolute;
+  top: 1rem;
+  z-index: 1;
+}
+
+.home__header {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  z-index: 1;
+  color: white;
+}
+
+.home__p {
+  position: absolute;
+  top: 6rem;
+  left: 1rem;
+  z-index: 1;
+  color: white;
+}
+
 //imports
 
 @import "./components/notfound.scss";
@@ -36,3 +57,5 @@ body {
 @import "./components/berry.scss";
 @import "./components/profile.scss";
 @import "./components/object.scss";
+@import "./components/loader.scss";
+@import "./components/gallery.scss";

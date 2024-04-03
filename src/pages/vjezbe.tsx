@@ -1,35 +1,41 @@
-import { Link } from "react-router-dom";
-import About from "./about";
+
 import Berries from "./berries";
 import Charizard from "./charizard";
 import Countries from "./countries";
-import Home from "./home";
 import Practice from "./practice";
 import Profile from "./profile";
+import Gallery from "./gallery";
 
-const vjezbeArr = [
-  { label: "About vjezba", url: "/About", element: <About /> },
+
+export const vjezbeArr = [
+
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
   { label: "Charizard vjezba", url: "/Charizard", element: <Charizard /> },
   { label: "Countries vjezba", url: "/Countries", element: <Countries /> },
-  { label: "Home", url: "/Home", element: <Home /> },
   { label: "Practice vjezba", url: "/Practice", element: <Practice /> },
   { label: "Profile vjezba", url: "/Profile", element: <Profile /> },
+  { label: "Gallery vjezba", url: "/Gallery", element: <Gallery /> },
+  { label: "Home", url: "/"},
 ];
 
 const Vjezbe = () => {
   return (
-    <>
-      <h1>Popis vjezbi</h1>
-      <div className="vjezbe">
-        {vjezbeArr.map((link) => {
-          return (
-            <nav>
-              <Link className="navbar__links" to={link.url}></Link>
-            </nav>
-          );
+    <> 
+   <nav className="navbar">
+   {vjezbeArr.map((link2, index)=> {
+    
+            return  <a key={index} className="navbar__links" href={link2.url}>
+            {link2.label}
+          </a>
+          
         })}
-      </div>
+        </nav>
+        <h1>Popis vjezbi</h1>
+      
+      
+      
+     
+   
     </>
   );
 };
