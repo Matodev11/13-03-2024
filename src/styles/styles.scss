@@ -4,6 +4,7 @@
 
 body {
   height: 100vh;
+  position: relative;
 }
 
 .btn {
@@ -59,3 +60,4 @@ body {
 @import "./components/object.scss";
 @import "./components/loader.scss";
 @import "./components/gallery.scss";
+@import "./components/main.scss";

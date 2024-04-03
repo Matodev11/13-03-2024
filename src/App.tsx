@@ -12,18 +12,16 @@ import NotFound from "./pages/notfound";
 import Vjezbe from "./pages/vjezbe";
 import DataTypes from "./pages/data-types";
 import Gallery from "./pages/gallery";
-
+import Main from "./pages/main";
 
 const App = () => {
   return (
     <>
       <Router>
-        
-
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-          <Route path="/countries" element={<Countries />}></Route>
+          <Route path="/countries" element={<Countries />} />
           <Route path="/About" element={<About />}></Route>
           <Route path="/Charizard" element={<Charizard />}></Route>
           <Route path="/Berries" element={<Berries />}></Route>
@@ -32,7 +30,9 @@ const App = () => {
           <Route path="/Vjezbe" element={<Vjezbe />}></Route>
           <Route path="/Data-types" element={<DataTypes />}></Route>
           <Route path="/Gallery" element={<Gallery />}></Route>
+          <Route path="/Main" element={<Main />}></Route>
         </Routes>
+
         <Layout>
           <div></div>
         </Layout>
