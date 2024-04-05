@@ -1,33 +1,137 @@
 .wrap {
-  height: 100vh;
+  height: 100rem;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(69, 69, 69, 0.434);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+
+  .loginbox {
+    border: black solid 1px;
+    border-radius: 1rem;
+    background-color: gray;
+    width: 35rem;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    z-index: 2;
+    left: 40rem;
+    top: 10rem;
+  }
+}
+
+.logo {
+  background-color: transparent;
+  height: 3rem;
+  width: 3rem;
+}
+
+.searchicon {
+  height: 0.8rem;
+  width: 0.8rem;
+  position: absolute;
+  left: 10rem;
 }
 
 .profiletop {
   top: 0;
-  position: absolute;
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  &__input {
+    border-radius: 0.2rem;
+    border: none;
+    width: 16rem;
+    height: 2rem;
+    text-align: center;
+    margin-left: 2rem;
+    background-color: rgb(87, 87, 87);
+    color: white;
+  }
+  &__ghost {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    font-weight: 900;
+    margin-right: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__active {
+    background-color: rgb(38, 38, 101);
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    font-weight: 900;
+
+    &:hover {
+      cursor: pointer;
+      background-color: white;
+      color: rgb(38, 38, 101);
+    }
+  }
+
+  &__navtop {
+    padding: 0.5rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    height: 4rem;
+    width: 90rem;
+    position: absolute;
+    top: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+    &--flex1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--nav {
+      margin-left: 2rem;
+      width: 35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 1000;
+        color: white;
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+          color: rgb(38, 38, 101);
+        }
+      }
+    }
+  }
+
   &__img {
     height: 30rem;
-    width: 100rem;
+    width: 90rem;
     border-radius: 1rem;
-    margin-left: 4rem;
   }
 
   &__h1 {
     font-size: 6rem;
     color: white;
     position: absolute;
-    right: 20rem;
+    right: 33rem;
     top: 8rem;
   }
 
@@ -35,7 +139,7 @@
     font-size: xx-large;
     color: white;
     position: absolute;
-    right: 20rem;
+    right: 30rem;
     top: 20rem;
     display: flex;
     justify-content: space-between;
@@ -43,7 +147,7 @@
 
   &__nav {
     position: absolute;
-    right: 10rem;
+    right: 30rem;
     bottom: 0rem;
     display: flex;
     justify-content: space-between;
@@ -64,29 +168,73 @@
 }
 
 .profileinfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  height: 70rem;
+
+  &__h2 {
+    font-size: 2.2rem;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__music {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 20rem;
-
-    top: 0;
+    margin-left: 38rem;
+    margin-bottom: 26rem;
   }
 
   &__songtab {
-    width: 30rem;
+    width: 50rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    row-gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.7rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    padding: 0.5rem;
 
     img {
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
     }
+  }
+
+  &__shuffle {
+    width: 10rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-right: 4rem;
+
+    &--p {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.album {
+  display: flex;
+  flex-direction: row;
+  width: 70rem;
+  height: 13rem;
+  position: absolute;
+  bottom: 0;
+  justify-content: space-between;
+  text-align: center;
+
+  &__img {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 0.5rem;
   }
 }
