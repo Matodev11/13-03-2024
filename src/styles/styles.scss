@@ -48,6 +48,11 @@ body {
   color: white;
 }
 
+.actors__img {
+  height: 5rem;
+  width: 5rem;
+}
+
 //imports
 
 @import "./components/notfound.scss";

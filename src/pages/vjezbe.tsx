@@ -5,6 +5,7 @@ import Practice from "./practice";
 import Profile from "./profile";
 import Gallery from "./gallery";
 import Main from "./main";
+import Glumci from "./glumci";
 
 export const vjezbeArr = [
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
@@ -15,6 +16,7 @@ export const vjezbeArr = [
   { label: "Gallery vjezba", url: "/Gallery", element: <Gallery /> },
   { label: "Home", url: "/" },
   { label: "Main vjezba", url: "/Main", element: <Main /> },
+  { label: "Glumci", url: "/Glumci", element: <Glumci /> },
 ];
 
 const Vjezbe = () => {

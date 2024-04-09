@@ -1,11 +1,10 @@
 import * as React from "react";
 
-
 function IconShuffle(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-    stroke="black"
-    stroke-width="0.8"
+      stroke="black"
+      strokeWidth="0.8"
       fill="black"
       viewBox="0 0 16 16"
       height="1.2em"

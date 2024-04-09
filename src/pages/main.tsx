@@ -48,6 +48,7 @@ type artistDataType = {
 
 type artstNavType = {
   link: string;
+  id: string;
 };
 
 type songDataType = {
@@ -67,10 +68,10 @@ const artistData: artistDataType = {
 };
 
 const artistNav: artstNavType[] = [
-  { link: "Overview" },
-  { link: "Music" },
-  { link: "Videos" },
-  { link: "Shows" },
+  { link: "Overview", id: "1" },
+  { link: "Music", id: "2" },
+  { link: "Videos", id: "3" },
+  { link: "Shows", id: "4" },
 ];
 
 const songData: songDataType[] = [
@@ -166,6 +167,7 @@ const loginData: loginDataType = {
 
 const Main = () => {
   const [login, setLogin] = useState<loginDataType | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("1");
 
   const showLogin = () => {
     setLogin(loginData);
@@ -188,7 +190,7 @@ const Main = () => {
           <div className="loginbox">
             <h2 className="loginbox__h2">Login info</h2>
             <div className="loginbox__close">
-              {[...Array(5)].map((_, index) => (
+              {[...Array(3)].map((_, index) => (
                 <span
                   key={index}
                   style={{ ["--s" as string]: index + 1 }}
@@ -222,8 +224,12 @@ const Main = () => {
               />
               <SearchIcon />
               <nav className="profiletop__navtop--nav">
-                {navMain.map((a) => {
-                  return <a href={a.mainLink}>{a.mainLink}</a>;
+                {navMain.map((a, index) => {
+                  return (
+                    <a key={index} href={a.mainLink}>
+                      {a.mainLink}
+                    </a>
+                  );
                 })}
               </nav>
             </div>
@@ -239,18 +245,30 @@ const Main = () => {
             className="profiletop__img"
             src={artistData.Artistimg}
             alt={artistData.Artistname}
-          />
+          />{" "}
           <h1 className="profiletop__h1">{artistData.Artistname}</h1>
           <div className="profiletop__info">
             <p>{artistData.Artistfollowers}</p>
             <p>{artistData.Artistlikes}</p>
             <p>{artistData.Artistplays}</p>
           </div>
-          <nav className="profiletop__nav">
+          <div className="profiletop__tabdiv">
             {artistNav.map((link) => {
-              return <a href={link.link}>{link.link}</a>;
+              return (
+                <div
+                  className={`profiletop__tabdiv--tab ${
+                    link.id === activeTab ? "active" : ""
+                  }`}
+                  key={link.id}
+                  onClick={() => {
+                    setActiveTab(link.id);
+                  }}
+                >
+                  {link.link}{" "}
+                </div>
+              );
             })}
-          </nav>
+          </div>
         </div>
         <main className="profileinfo">
           <div className="profileinfo__music">
@@ -264,11 +282,15 @@ const Main = () => {
             {songData.map((song) => {
               return (
                 <div className="profileinfo__songtab">
-                  <img src={song.artistImg} alt={song.artistAlbumName} />
-                  <p>{song.artistSongName}</p>
+                  <img
+                    key={song.artistAlbumName}
+                    src={song.artistImg}
+                    alt={song.artistAlbumName}
+                  />
+                  <p key={song.artistSongName}>{song.artistSongName}</p>
                   <p>{song.artistAlbumName}</p>
-                  <p>{song.artistTime}:00</p>
-                  <p>{song.artistPlays} Plays</p>
+                  <p key={song.artistTime}>{song.artistTime}:00</p>
+                  <p key={song.artistPlays}>{song.artistPlays} Plays</p>
                   <IconPlay />
                   <IconShare />
                 </div>

@@ -13,6 +13,7 @@ import Vjezbe from "./pages/vjezbe";
 import DataTypes from "./pages/data-types";
 import Gallery from "./pages/gallery";
 import Main from "./pages/main";
+import Glumci from "./pages/glumci";
 
 const App = () => {
   return (
@@ -31,6 +32,8 @@ const App = () => {
           <Route path="/Data-types" element={<DataTypes />}></Route>
           <Route path="/Gallery" element={<Gallery />}></Route>
           <Route path="/Main" element={<Main />}></Route>
+          <Route path="/Glumci" element={<Glumci />}></Route>
+          <Route></Route>
         </Routes>
 
         <Layout>
