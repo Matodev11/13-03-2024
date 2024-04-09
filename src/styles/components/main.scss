@@ -7,24 +7,120 @@
   flex-direction: column;
   border-radius: 0.5rem;
 
+  .artistimg {
+    height: 35rem;
+    width: 20rem;
+    border-radius: 1rem;
+    position: absolute;
+    top: 8rem;
+    left: 25rem;
+    z-index: 3;
+  }
+
+  .artist {
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+    width: 20rem;
+    position: absolute;
+    left: 25rem;
+    bottom: 28rem;
+    border: solid whitesmoke 2px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
   .loginbox {
     border: black solid 1px;
     border-radius: 1rem;
-    background-color: gray;
+    background-color: rgba(46, 36, 123, 0.861);
     width: 35rem;
     height: 40rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     padding: 1rem;
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     left: 40rem;
     top: 10rem;
+
+    p {
+      color: antiquewhite;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    &__h2 {
+      font-weight: 1000;
+      font-size: 3rem;
+      color: whitesmoke;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    &__inp1 {
+      height: 3rem;
+      width: 30rem;
+      border-radius: 0.5rem;
+      border: none;
+      margin-left: 1.5rem;
+      font-size: 2rem;
+    }
+
+    &__inp2 {
+      height: 3rem;
+      width: 30rem;
+      border-radius: 0.5rem;
+      border: none;
+      margin-left: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    &__close {
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bolder;
+      right: 1rem;
+      animation: animateBg 10s linear infinite;
+
+      &--2 {
+        z-index: 5;
+        position: relative;
+        margin-top: 0.45rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: animateX 2s linear infinite;
+        transform: rotate(calc(18deg * var(--s)));
+      }
+
+      span::before {
+        content: "";
+        position: absolute;
+        top: 85%;
+        left: 70%;
+        width: 5px;
+        height: 5px;
+        background: #00ff0a;
+        border-radius: 50%;
+        animation: animate 2s linear infinite;
+        animation-delay: calc(0.1s * var(--s));
+      }
+    }
   }
 }
-
 .logo {
   background-color: transparent;
   height: 3rem;
@@ -46,6 +142,13 @@
   align-items: center;
   justify-content: center;
 
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    width: 35rem;
+    height: 4rem;
+  }
+
   &__input {
     border-radius: 0.2rem;
     border: none;
@@ -53,18 +156,25 @@
     height: 2rem;
     text-align: center;
     margin-left: 2rem;
-    background-color: rgb(87, 87, 87);
+    background-color: rgb(255, 255, 255);
     color: white;
   }
   &__ghost {
+    width: 6rem;
     background-color: transparent;
     border: none;
     color: white;
     padding: 0.5rem;
     font-weight: 900;
     margin-right: 2rem;
+    font-size: 1.3rem;
     &:hover {
       cursor: pointer;
+      background-color: rgb(38, 38, 101);
+      border-radius: 1rem;
+      border: none;
+      padding: 0.5rem;
+      width: 6rem;
     }
   }
   &__active {
@@ -73,6 +183,7 @@
     border: none;
     padding: 0.5rem;
     font-weight: 900;
+    font-size: 1.1rem;
 
     &:hover {
       cursor: pointer;
@@ -102,14 +213,14 @@
 
     &--nav {
       margin-left: 2rem;
-      width: 35rem;
+      width: 45rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       a {
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 1000;
         color: white;
         &:hover {
@@ -174,6 +285,25 @@
   position: relative;
   height: 70rem;
 
+  .iconplay {
+    height: 2rem;
+    width: 2rem;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .iconshare {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
   &__h2 {
     font-size: 2.2rem;
   }
@@ -194,6 +324,8 @@
   &__songtab {
     width: 50rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 0.7rem;
@@ -228,7 +360,7 @@
   width: 70rem;
   height: 13rem;
   position: absolute;
-  bottom: 0;
+  bottom: 8rem;
   justify-content: space-between;
   text-align: center;
 
@@ -236,5 +368,17 @@
     height: 10rem;
     width: 10rem;
     border-radius: 0.5rem;
+  }
+}
+
+@keyframes animate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animateX {
+  to {
+    transform: rotate(360deg);
   }
 }

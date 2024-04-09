@@ -2,30 +2,47 @@ import { useState } from "react";
 import IconLogo from "../assets/logo";
 import SearchIcon from "../assets/search";
 import IconShuffle from "../assets/shuffle";
+import IconPlay from "../assets/play";
+import IconShare from "../assets/iconshare";
+import IconCancel from "../assets/cancel";
+
+const djBio: string = `
+In the pulsating heart of the electronic music scene,
+ there exists a luminary whose sonic tapestries weave
+  dreams into reality and ignite dancefloors with fervent
+   energy. Enter DJ Nova, a maestro of beats and melodies,
+    whose artistry transcends the boundaries of sound,
+     captivating audiences worldwide with a blend of
+      electrifying rhythms and soul-stirring harmonies.     
+Born and raised amidst the vibrant streets of a metropolis,
+ DJ Nova's journey into the realm of music began at an early age,
+  fueled by a deep-seated passion for sonic exploration. Inspired
+   by the diverse cultural tapestry surrounding him, he embarked
+    on a quest to carve out his unique sonic identity, drawing
+     upon a myriad of influences ranging from underground techno
+      to melodic house, and everything in between.
+`;
 
 type navMainType = {
   mainLink: string;
-}
-
+};
 
 const navMain: navMainType[] = [
-
-{mainLink:"Feature"},
-{mainLink:"Discover"},
-{mainLink:"Shows"},
-{mainLink:"Fans"},
-{mainLink:"Pricing"},
-{mainLink:"Boiler room"},
-{mainLink:"Videos"},
-{mainLink:"Help center"},
-
-]
+  { mainLink: "Feature" },
+  { mainLink: "Discover" },
+  { mainLink: "Shows" },
+  { mainLink: "Fans" },
+  { mainLink: "Pricing" },
+  { mainLink: "Boiler room" },
+  { mainLink: "Videos" },
+  { mainLink: "Help center" },
+];
 
 type artistDataType = {
   Artistname: string;
-  Artistfollowers: number;
-  Artistlikes: number;
-  Artistplays: number;
+  Artistfollowers: string;
+  Artistlikes: string;
+  Artistplays: string;
   Artistimg: string;
 };
 
@@ -43,9 +60,9 @@ type songDataType = {
 
 const artistData: artistDataType = {
   Artistname: "Neko ime",
-  Artistfollowers: 500,
-  Artistlikes: 210,
-  Artistplays: 509,
+  Artistfollowers: "500K Followers",
+  Artistlikes: "210K Likes",
+  Artistplays: "509K Plays",
   Artistimg: "https://source.unsplash.com/random/?music-artist",
 };
 
@@ -103,85 +120,120 @@ const songData: songDataType[] = [
 
 type albumDataType = {
   albumImg: string;
-  albumName:string;
-}
-
+  albumName: string;
+};
 
 const albumData: albumDataType[] = [
-
-{albumImg: "https://source.unsplash.com/random/?music-album1", albumName:"Eternal Echoes"},
-{albumImg: "https://source.unsplash.com/random/?music-album2", albumName:"Midnight Melodies"},
-{albumImg: "https://source.unsplash.com/random/?music-album3", albumName:"Whispers in the Wind"},
-{albumImg: "https://source.unsplash.com/random/?music-album4", albumName:"Luminescent Dreams"},
-{albumImg: "https://source.unsplash.com/random/?music-album5", albumName:"Infinite Horizons"},
-{albumImg: "https://source.unsplash.com/random/?music-album6", albumName:"Sonic Reverie"}
-
-
-]
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album1",
+    albumName: "Eternal Echoes",
+  },
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album2",
+    albumName: "Midnight Melodies",
+  },
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album3",
+    albumName: "Whispers in the Wind",
+  },
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album4",
+    albumName: "Luminescent Dreams",
+  },
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album5",
+    albumName: "Infinite Horizons",
+  },
+  {
+    albumImg: "https://source.unsplash.com/random/?music-album6",
+    albumName: "Sonic Reverie",
+  },
+];
 
 type loginDataType = {
-  input1:string;
-placeholder1:string;
-input2:string;
-placheolder2:string;}
+  input1: string;
+  placeholder1: string;
+  input2: string;
+  placheolder2: string;
+};
 
-
-
-const loginData:loginDataType = {
-
-input1:"text",
-placeholder1:"username",
-input2:"password",
-placheolder2:"password",
-
-}
-
+const loginData: loginDataType = {
+  input1: "text",
+  placeholder1: "username",
+  input2: "password",
+  placheolder2: "password",
+};
 
 const Main = () => {
+  const [login, setLogin] = useState<loginDataType | null>(null);
 
-const [login, setLogin] = useState<loginDataType | null>(null)
-
-const showLogin = () => {
-setLogin(loginData)
-}
-
+  const showLogin = () => {
+    setLogin(loginData);
+  };
 
   return (
     <>
-
       <div className="wrap">
-      {login && (
+        <img
+          className="artistimg"
+          src="https://source.unsplash.com/random/?DJ"
+          alt={artistData.Artistname}
+        />
+        <div className="artist">
+          <h2 className="artist__h2">BIOGRAPHY</h2>
+          <p className="artist__p">{djBio}</p>
+        </div>
 
-<div className="loginbox">
-<h2 className="loginbox__h2">Login info</h2>
-<div className="loginbox__close">
-<div onClick={()=> setLogin(null)} className="loginbox__close--2">X</div>
-</div>
-<input className="loginbox__inp1" type={loginData.input1} placeholder={loginData.placeholder1} />
-<input className="loginbox__inp2" type={loginData.input2} placeholder={loginData.placheolder2} />
-</div>
+        {login && (
+          <div className="loginbox">
+            <h2 className="loginbox__h2">Login info</h2>
+            <div className="loginbox__close">
+              {[...Array(5)].map((_, index) => (
+                <span
+                  key={index}
+                  style={{ ["--s" as string]: index + 1 }}
+                ></span>
+              ))}
 
-)}
+              <IconCancel onClick={() => setLogin(null)} />
+            </div>
+            <p>Enter your username or email address</p>
+            <input
+              className="loginbox__inp1"
+              type={loginData.input1}
+              placeholder={loginData.placeholder1}
+            />
+            <p>Enter your password:</p>
+            <input
+              className="loginbox__inp2"
+              type={loginData.input2}
+              placeholder={loginData.placheolder2}
+            />
+          </div>
+        )}
         <div className="profiletop">
-        
           <div className="profiletop__navtop">
             <div className="profiletop__navtop--flex1">
-          <IconLogo/>
-        <input className="profiletop__input" placeholder="Search" type="text" /> 
-        <SearchIcon/> 
-        <nav className="profiletop__navtop--nav">  
-        {navMain.map((a)=> {
-return <a href={a.mainLink}>{a.mainLink}</a>
-})} 
-</nav>
-</div>
+              <IconLogo />
+              <input
+                className="profiletop__input"
+                placeholder="Search"
+                type="text"
+              />
+              <SearchIcon />
+              <nav className="profiletop__navtop--nav">
+                {navMain.map((a) => {
+                  return <a href={a.mainLink}>{a.mainLink}</a>;
+                })}
+              </nav>
+            </div>
 
-<div className="profiletop__navtop--flex2">
-<button onClick={showLogin} className="profiletop__ghost">LOGIN</button>
-<button className="profiletop__active">SIGN UP FOR FREE</button>
-
-</div>
-
+            <div className="profiletop__navtop--flex2">
+              <button onClick={showLogin} className="profiletop__ghost">
+                LOGIN
+              </button>
+              <button className="profiletop__active">SIGN UP FOR FREE</button>
+            </div>
           </div>
           <img
             className="profiletop__img"
@@ -190,10 +242,9 @@ return <a href={a.mainLink}>{a.mainLink}</a>
           />
           <h1 className="profiletop__h1">{artistData.Artistname}</h1>
           <div className="profiletop__info">
-            {artistData.Artistfollowers}
-            {"K FOLLOWERS"}
-            {artistData.Artistlikes} {"K LIKE"}
-            {artistData.Artistplays} {"K PLAYS"}
+            <p>{artistData.Artistfollowers}</p>
+            <p>{artistData.Artistlikes}</p>
+            <p>{artistData.Artistplays}</p>
           </div>
           <nav className="profiletop__nav">
             {artistNav.map((link) => {
@@ -202,19 +253,14 @@ return <a href={a.mainLink}>{a.mainLink}</a>
           </nav>
         </div>
         <main className="profileinfo">
-        
-
-
           <div className="profileinfo__music">
             <div className="profileinfo__flex">
-          <h2 className="profileinfo__h2">Featured songs</h2>
-          <div className="profileinfo__shuffle">
-          <p className="profileinfo__shuffle--p">SHUFFLE </p>
-          <IconShuffle/>
-          </div>
-          
-          
-          </div>
+              <h2 className="profileinfo__h2">Featured songs</h2>
+              <div className="profileinfo__shuffle">
+                <p className="profileinfo__shuffle--p">SHUFFLE </p>
+                <IconShuffle />
+              </div>
+            </div>
             {songData.map((song) => {
               return (
                 <div className="profileinfo__songtab">
@@ -223,23 +269,27 @@ return <a href={a.mainLink}>{a.mainLink}</a>
                   <p>{song.artistAlbumName}</p>
                   <p>{song.artistTime}:00</p>
                   <p>{song.artistPlays} Plays</p>
+                  <IconPlay />
+                  <IconShare />
                 </div>
               );
             })}
           </div>
           <div className="album">
-{albumData.map((album)=> {
-return (
-  <div className="album__div">
-<img className="album__img" src={album.albumImg} alt={album.albumName}/>
-<p className="album__p">{album.albumName}</p>
-</div>
-)
-})}
-
+            {albumData.map((album) => {
+              return (
+                <div className="album__div">
+                  <img
+                    className="album__img"
+                    src={album.albumImg}
+                    alt={album.albumName}
+                  />
+                  <p className="album__p">{album.albumName}</p>
+                </div>
+              );
+            })}
           </div>
         </main>
-       
       </div>
     </>
   );
