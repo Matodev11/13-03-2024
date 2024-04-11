@@ -14,6 +14,8 @@ import DataTypes from "./pages/data-types";
 import Gallery from "./pages/gallery";
 import Main from "./pages/main";
 import Glumci from "./pages/glumci";
+import Games from "./pages/games";
+import GameInfo from "./pages/gameinfo";
 
 const App = () => {
   return (
@@ -33,7 +35,10 @@ const App = () => {
           <Route path="/Gallery" element={<Gallery />}></Route>
           <Route path="/Main" element={<Main />}></Route>
           <Route path="/Glumci" element={<Glumci />}></Route>
-          <Route></Route>
+          <Route path="/Games">
+            <Route index element={<Games />} />
+            <Route path=":gameId" element={<GameInfo />} />
+          </Route>
         </Routes>
 
         <Layout>

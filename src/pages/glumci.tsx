@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import MovieRender from "../components/movierender";
+import ActorsRender from "../components/glumci";
 
 type TabType = {
   id: string;
@@ -23,6 +24,7 @@ const tabData: TabType[] = [
     id: "4",
     label: "Blade Runner 2049",
   },
+  { id: "5", label: "actors" },
 ];
 
 export type MovieType = {
@@ -59,17 +61,17 @@ const movieData: MovieType[] = [
   },
 ];
 
-type ActorType = {
-  id: string;
+export type ActorType = {
   name: string;
   movie: string;
   yearBorn: string;
   imgUrl: string;
+  id: string;
 };
 
 const actorData: ActorType[] = [
   {
-    id: "1",
+    id: "5",
     name: "Macaulay Culkin",
     movie: "Home Alone",
     yearBorn: "1980",
@@ -77,7 +79,7 @@ const actorData: ActorType[] = [
       "https://cdn.britannica.com/86/223086-050-A0B57A81/Macaulay-Culkin-2018.jpg",
   },
   {
-    id: "2",
+    id: "6",
     name: "Jim Carrey",
     movie: "Dumb and Dumber",
     yearBorn: "1962",
@@ -88,11 +90,6 @@ const actorData: ActorType[] = [
 
 const Glumci = () => {
   const [activeTab, setActiveTab] = useState<TabType>(tabData[0]);
-  const [showActors, setShowActors] = useState<ActorType[]>(actorData);
-
-  const toggleActors = () => {
-    setShowActors(actorData);
-  };
 
   return (
     <>
@@ -113,26 +110,9 @@ const Glumci = () => {
         <MovieRender
           movie={movieData.find((movie) => activeTab.id === movie.id)}
         />
-        <div onClick={toggleActors}>X</div>
-
-        {showActors && (
-          <div className="actors">
-            {actorData.map((actor) => {
-              return (
-                <div>
-                  <img
-                    className="actors__img"
-                    src={actor.imgUrl}
-                    alt={actor.imgUrl}
-                  />
-                  <p>
-                    {actor.name} {actor.yearBorn}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <ActorsRender
+          actor={actorData.find((actor) => activeTab.id === actor.id)}
+        />
       </div>
     </>
   );
