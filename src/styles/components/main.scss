@@ -310,6 +310,26 @@
   position: relative;
   height: 70rem;
 
+  &__video {
+    height: 10rem;
+    width: 50rem;
+    background-color: red;
+    margin-left: 38rem;
+    margin-bottom: 26rem;
+
+    &--div {
+      height: 5rem;
+      width: 10rem;
+      background-color: purple;
+    }
+
+    &--img {
+      height: 2rem;
+      width: 2rem;
+      image-rendering: optimizeQuality;
+    }
+  }
+
   .iconplay {
     height: 2rem;
     width: 2rem;
