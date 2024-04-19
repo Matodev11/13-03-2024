@@ -6,11 +6,6 @@ body {
   position: relative;
 }
 
-.btn {
-  width: 6rem;
-  height: 2.5rem;
-  border-radius: 1rem;
-}
 .vjezbe {
   display: flex;
   justify-content: space-around;
@@ -67,3 +62,5 @@ body {
 @import "./components/main.scss";
 @import "./components/games.scss";
 @import "./components/cars.scss";
+@import "./components/glovo.scss";
+@import "./components/form.scss";

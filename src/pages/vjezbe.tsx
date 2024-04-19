@@ -8,6 +8,8 @@ import Main from "./main";
 import Glumci from "./glumci";
 import Games from "./games";
 import Cars from "./cars";
+import Glovo from "../components/glovo";
+import Form from "../components/form";
 
 export const vjezbeArr = [
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
@@ -21,6 +23,8 @@ export const vjezbeArr = [
   { label: "Glumci", url: "/Glumci", element: <Glumci /> },
   { label: "Games", url: "/Games", element: <Games /> },
   { label: "Cars", url: "/Cars", element: <Cars /> },
+  { label: "Glovo", url: "/Glovo", element: <Glovo /> },
+  { label: "Form", url: "/Form", element: <Form /> },
 ];
 
 const Vjezbe = () => {
