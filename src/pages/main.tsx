@@ -5,6 +5,7 @@ import IconShuffle from "../assets/shuffle";
 import IconPlay from "../assets/play";
 import IconShare from "../assets/iconshare";
 import IconCancel from "../assets/cancel";
+import Video from "./main tabs/video";
 
 const djBio: string = `
 In the pulsating heart of the electronic music scene,
@@ -165,75 +166,22 @@ const loginData: loginDataType = {
   placheolder2: "password",
 };
 
-type HTMLConstruct = JSX.Element | null;
+export type videoDataType = {
+  img: string;
+};
 
-const overviewHTML = (
-  <div className="profileinfo__music">
-    {songData.map((song) => (
-      <div className="profileinfo__songtab" key={song.artistSongName}>
-        <img
-          key={song.artistAlbumName}
-          src={song.artistImg}
-          alt={song.artistAlbumName}
-        />
-        <p key={song.artistSongName}>{song.artistSongName}</p>
-        <p>{song.artistAlbumName}</p>
-        <p key={song.artistTime}>{song.artistTime}:00</p>
-        <p key={song.artistPlays}>{song.artistPlays} Plays</p>
-        <IconPlay />
-        <IconShare />
-      </div>
-    ))}
-  </div>
-);
-
-type videoDataType = {
-  img:string;
-}
-
-
-const videoData:videoDataType[] = [
-
-{img:"https://source.unsplash.com/random/?concert1"},
-{img:"https://source.unsplash.com/random/?concert2"},
-{img:"https://source.unsplash.com/random/?concert3"},
-{img:"https://source.unsplash.com/random/?concert4"},
-{img:"https://source.unsplash.com/random/?concert5"},
-{img:"https://source.unsplash.com/random/?concert6"}
-]
-
-
-
+export const videoData: videoDataType[] = [
+  { img: "https://source.unsplash.com/random/?concert-1" },
+  { img: "https://source.unsplash.com/random/?concert-2" },
+  { img: "https://source.unsplash.com/random/?concert-3" },
+  { img: "https://source.unsplash.com/random/?concert-4" },
+  { img: "https://source.unsplash.com/random/?concert-5" },
+  { img: "https://source.unsplash.com/random/?concert-6" },
+];
 
 const Main = () => {
   const [login, setLogin] = useState<loginDataType | null>(null);
-  const [activeTabHTML, setActiveTabHTML] = useState<HTMLConstruct>(overviewHTML);
   const [activeTab, setActiveTab] = useState<number>(1);
-
-  const handleTabClick = (linkId: number) => {
-    let newHTML: HTMLConstruct = null;
-    if (linkId === 2) {
-     
-      newHTML = overviewHTML;
-    } else if (linkId === 3) {
-     
-      newHTML = (
-        <div className="profileinfo__video">
-          {videoData.map((video, index) => (
-            <div className="profileinfo__video--div" key={index}>
-              <img
-                className="profileinfo__video--img"
-                src={video.img}
-                alt={video.img}
-              />
-            </div>
-          ))}
-        </div>
-      );
-    }
-    setActiveTabHTML(newHTML);
-  };
-
 
   const showLogin = () => {
     setLogin(loginData);
@@ -327,8 +275,7 @@ const Main = () => {
                   }`}
                   key={link.id}
                   onClick={() => {
-                    setActiveTab(link.id)
-                    handleTabClick(link.id);
+                    setActiveTab(link.id);
                   }}
                 >
                   {link.link}{" "}
@@ -338,7 +285,6 @@ const Main = () => {
           </div>
         </div>
         <main className="profileinfo">
-        {activeTabHTML || overviewHTML}
           <div className="profileinfo__music">
             <div className="profileinfo__flex">
               <h2 className="profileinfo__h2">Featured songs</h2>
@@ -347,7 +293,31 @@ const Main = () => {
                 <IconShuffle />
               </div>
             </div>
-            
+            {activeTab === 1 ? (
+              <>
+                {" "}
+                {songData.map((song) => (
+                  <div
+                    className="profileinfo__songtab"
+                    key={song.artistSongName}
+                  >
+                    <img
+                      key={song.artistAlbumName}
+                      src={song.artistImg}
+                      alt={song.artistAlbumName}
+                    />
+                    <p key={song.artistSongName}>{song.artistSongName}</p>
+                    <p>{song.artistAlbumName}</p>
+                    <p key={song.artistTime}>{song.artistTime}:00</p>
+                    <p key={song.artistPlays}>{song.artistPlays} Plays</p>
+                    <IconPlay />
+                    <IconShare />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <Video />
+            )}
           </div>
           <div className="album">
             {albumData.map((album) => {
