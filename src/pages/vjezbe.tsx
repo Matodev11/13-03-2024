@@ -7,6 +7,7 @@ import Gallery from "./gallery";
 import Main from "./main";
 import Glumci from "./glumci";
 import Games from "./games";
+import Cars from "./cars";
 
 export const vjezbeArr = [
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
@@ -19,6 +20,7 @@ export const vjezbeArr = [
   { label: "Main vjezba", url: "/Main", element: <Main /> },
   { label: "Glumci", url: "/Glumci", element: <Glumci /> },
   { label: "Games", url: "/Games", element: <Games /> },
+  { label: "Cars", url: "/Cars", element: <Cars /> },
 ];
 
 const Vjezbe = () => {

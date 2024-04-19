@@ -16,6 +16,7 @@ import Main from "./pages/main";
 import Glumci from "./pages/glumci";
 import Games from "./pages/games";
 import GameInfo from "./pages/gameinfo";
+import Cars from "./pages/cars";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
             <Route index element={<Games />} />
             <Route path=":gameId" element={<GameInfo />} />
           </Route>
+          <Route path="Cars" element={<Cars/>}> </Route>
         </Routes>
 
         <Layout>
