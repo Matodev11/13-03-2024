@@ -40,33 +40,30 @@
   }
 }
 
-.form {
-  max-width: 400px;
+form {
+  max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
 }
 
 .formbtn {
-  width: 10rem;
+  width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: blue;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #45a049;
-  }
-
-  .field {
-    margin-bottom: 20px;
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-  }
 }
