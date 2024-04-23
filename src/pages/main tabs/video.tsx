@@ -1,3 +1,4 @@
+import IconPlayVideo from "../../assets/iconplayvideo";
 import { videoDataType, videoData } from "../main";
 
 const Video = () => {
@@ -12,6 +13,7 @@ const Video = () => {
               src={video.img}
               alt={video.img}
             />
+            <IconPlayVideo/>
           </div>
         ))}
       </div>

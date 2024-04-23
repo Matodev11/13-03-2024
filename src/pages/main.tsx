@@ -6,6 +6,8 @@ import IconPlay from "../assets/play";
 import IconShare from "../assets/iconshare";
 import IconCancel from "../assets/cancel";
 import Video from "./main tabs/video";
+import Overview from "./main tabs/overview";
+import Shows from "./main tabs/shows";
 
 const djBio: string = `
 In the pulsating heart of the electronic music scene,
@@ -295,29 +297,37 @@ const Main = () => {
             </div>
             {activeTab === 1 ? (
               <>
-                {" "}
-                {songData.map((song) => (
-                  <div
-                    className="profileinfo__songtab"
-                    key={song.artistSongName}
-                  >
-                    <img
-                      key={song.artistAlbumName}
-                      src={song.artistImg}
-                      alt={song.artistAlbumName}
-                    />
-                    <p key={song.artistSongName}>{song.artistSongName}</p>
-                    <p>{song.artistAlbumName}</p>
-                    <p key={song.artistTime}>{song.artistTime}:00</p>
-                    <p key={song.artistPlays}>{song.artistPlays} Plays</p>
-                    <IconPlay />
-                    <IconShare />
-                  </div>
-                ))}
+               <Overview/>
               </>
-            ) : (
-              <Video />
-            )}
+            ) : activeTab === 2 ? (
+              <>
+              {" "}
+              {songData.map((song) => (
+                <div
+                  className="profileinfo__songtab"
+                  key={song.artistSongName}
+                >
+                  <img
+                    key={song.artistAlbumName}
+                    src={song.artistImg}
+                    alt={song.artistAlbumName}
+                  />
+                  <p key={song.artistSongName}>{song.artistSongName}</p>
+                  <p>{song.artistAlbumName}</p>
+                  <p key={song.artistTime}>{song.artistTime}:00</p>
+                  <p key={song.artistPlays}>{song.artistPlays} Plays</p>
+                  <IconPlay />
+                  <IconShare />
+                </div>
+              ))}
+            </>
+            ) : activeTab === 3 ? (
+             <Video/>
+            ) : activeTab === 4 ? (
+              <>
+              <Shows/>
+              </>
+            ) : null}
           </div>
           <div className="album">
             {albumData.map((album) => {

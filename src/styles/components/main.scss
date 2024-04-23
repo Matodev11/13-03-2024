@@ -15,7 +15,7 @@
     top: 8rem;
     left: 25rem;
     z-index: 3;
-    image-rendering: optimizeQuality;
+    object-fit: cover;
   }
 
   .artist {
@@ -260,7 +260,7 @@
     height: 30rem;
     width: 90rem;
     border-radius: 1rem;
-    image-rendering: optimizeQuality;
+    object-fit: cover;
   }
 
   &__h1 {
@@ -310,29 +310,45 @@
   position: relative;
   height: 70rem;
 
+  .iconplayvideo {
+    position: absolute;
+    top: 4rem;
+    right: 7.7rem;
+    width: 5rem;
+    height: 5rem;
+
+    &:hover {
+      &:hover {
+        scale: 1.1;
+        cursor: pointer;
+        background: transparent;
+        box-shadow: 1rem 1rem 1rem #a771f3;
+        border-radius: 10rem;
+      }
+    }
+  }
+
   &__video {
-    height: 40rem;
+    height: 30rem;
     width: 50rem;
-    background-color: red;
-    margin-left: 38rem;
-    margin-bottom: 26rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
 
     &--div {
-      height: 5rem;
-      width: 10rem;
-      background-color: purple;
+      height: 7rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: row;
+      margin-top: 2rem;
+      position: relative;
     }
 
     &--img {
-      height: 4rem;
-      width: 4rem;
-      image-rendering: optimizeQuality;
+      height: 14rem;
+      width: 10rem;
+      object-fit: cover;
     }
   }
 
@@ -388,7 +404,7 @@
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
-      image-rendering: optimizeQuality;
+      object-fit: cover;
     }
   }
 
@@ -420,7 +436,7 @@
     height: 10rem;
     width: 10rem;
     border-radius: 0.5rem;
-    image-rendering: optimizeQuality;
+    object-fit: cover;
   }
 }
 
@@ -435,3 +451,8 @@
     transform: rotate(360deg);
   }
 }
+
+//imports
+
+@import "./mainstyles/overview.scss";
+@import "./mainstyles/shows.scss";

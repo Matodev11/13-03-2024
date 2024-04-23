@@ -23,25 +23,6 @@
   }
 }
 
-img {
-  height: 3rem;
-  width: 3rem;
-  margin-top: 4rem;
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: bolder;
-  color: white;
-  margin-right: 8rem;
-}
-
-p {
-  color: white;
-  font-weight: 900;
-  font-size: 1.15rem;
-}
-
 .flex {
   height: 100%;
   width: 100%;
@@ -57,6 +38,25 @@ p {
   height: 80vh;
   width: 70%;
   margin-left: 15%;
+
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 4rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: white;
+    margin-right: 8rem;
+  }
+
+  p {
+    color: white;
+    font-weight: 900;
+    font-size: 1.15rem;
+  }
 
   &__div {
     height: 100%;
