@@ -19,6 +19,9 @@ import GameInfo from "./pages/gameinfo";
 import Cars from "./pages/cars";
 import Glovo from "./components/glovo";
 import Form from "./components/form";
+import Vjezba1 from "./pages/vjezba-1";
+import Phones from "./pages/phones";
+import PhonesCreate from "./pages/phones.create";
 
 const App = () => {
   return (
@@ -47,6 +50,11 @@ const App = () => {
           </Route>
           <Route path="Glovo" element={<Glovo />}></Route>
           <Route path="Form" element={<Form />}></Route>
+          <Route path="Vjezba1" element={<Vjezba1 />}></Route>
+          <Route path="Phones" element={<Phones />}>
+            <Route index element={<Phones />} />
+            <Route path="new" element={<PhonesCreate />}></Route>
+          </Route>
         </Routes>
 
         <Layout>

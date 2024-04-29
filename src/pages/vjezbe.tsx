@@ -10,6 +10,8 @@ import Games from "./games";
 import Cars from "./cars";
 import Glovo from "../components/glovo";
 import Form from "../components/form";
+import Vjezba1 from "./vjezba-1";
+import Phones from "./phones";
 
 export const vjezbeArr = [
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
@@ -25,6 +27,8 @@ export const vjezbeArr = [
   { label: "Cars", url: "/Cars", element: <Cars /> },
   { label: "Glovo", url: "/Glovo", element: <Glovo /> },
   { label: "Form", url: "/Form", element: <Form /> },
+  { label: "Vjezba1", url: "/Vjezba1", element: <Vjezba1 /> },
+  { label: "Phones", url: "/Phones", element: <Phones /> },
 ];
 
 const Vjezbe = () => {
