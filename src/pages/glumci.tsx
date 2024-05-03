@@ -7,6 +7,7 @@ type TabType = {
   label: string;
 };
 
+
 const tabData: TabType[] = [
   {
     id: "1",
