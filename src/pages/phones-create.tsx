@@ -5,6 +5,7 @@ import { PhoneType } from "./phones";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
+
 const schema = yup.object().shape({
   brand: yup.string().required("Brand name is required"),
   model: yup.string().required("Model name is required"),
@@ -135,7 +136,7 @@ const PhonesCreate = () => {
             <p className="field__validation">{errors.price.message}</p>
           )}
         </div>
-        <Button color="blue">Submit</Button>
+        <button color="blue">Submit</button>
       </form>
     </>
   );

@@ -65,28 +65,12 @@
       "price": 1199
     },
     {
-      "id": "6",
-      "brand": "Sony",
-      "model": "Xperia 1 III",
-      "storage": "256GB",
-      "color": "Frosted Black",
-      "price": 1299
-    },
-    {
       "id": "7",
       "brand": "Huawei",
       "model": "P40 Pro+",
       "storage": "512GB",
       "color": "Ceramic White",
       "price": 1399
-    },
-    {
-      "id": "8",
-      "brand": "LG",
-      "model": "Wing 5G",
-      "storage": "256GB",
-      "color": "Aurora Gray",
-      "price": 999
     },
     {
       "id": "9",

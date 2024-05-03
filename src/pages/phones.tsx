@@ -1,39 +1,54 @@
 import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-type PhoneType = {
+export type PhoneType = {
   id: string;
   brand: string;
   model: string;
-  color: string;
   storage: string;
+  color: string;
   price: number;
 };
 
 const Phones = () => {
   const [data, setData] = useState<PhoneType[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
+  const navigate = useNavigate();
   const getData = () => {
     fetch("http://localhost:3000/phones")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`http Error! status: ${response.status}`);
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
         }
-        return response.json();
+        console.log(res);
       })
-      .then((data: PhoneType[]) => {
+      .then((data) => {
         setData(data);
-        setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
-  const putData = (values: PhoneType) => {
-    fetch("http://localhost:3000/phones", {
-      method: "POST",
+  const deleteData = (id: string) => {
+    fetch(`http://localhost:3000/phones/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(() => {
+        getData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const editData = (id: string, values: PhoneType) => {
+    fetch(`http://localhost:3000/phones/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,8 +59,7 @@ const Phones = () => {
           return res.json();
         }
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         getData();
       })
       .catch((err) => {
@@ -53,109 +67,80 @@ const Phones = () => {
       });
   };
 
-  const deleteData = (id: string) => {
-    const toDelete = "5364";
-    fetch(`http://localhost:3000/phones/${toDelete}`, {
-      method: "DELETE",
-    });
-  };
-
-  const editData = (id: string, values: PhoneType) => {
-    const toEdit = "5364";
-    const fakeData: PhoneType = {
-      brand: "asd",
-      color: "asd",
-      id: "5364",
-      model: "asdg",
-      price: 325423,
-      storage: "afjgnr",
-    };
-    fetch(`http://localhost:3000/phones/${toEdit}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(fakeData),
-    });
-  };
-
   useEffect(() => {
     getData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <div>
-        <button
-          onClick={() => {
-            const fakeData: PhoneType = {
-              brand: "asd",
-              color: "asd",
-              id: "5364",
-              model: "asdg",
-              price: 325423,
-              storage: "afjgnr",
-            };
-            putData(fakeData);
-          }}
-        >
-          ADD
-        </button>
-        <button
-          onClick={() => {
-            deleteData("5364");
-          }}
-        >
-          DELETE
-        </button>
-        <button
-          onClick={() => {
-            const data: PhoneType = {
-              brand: "wqtqw3t3qwtgads",
-              color: "aq3te5336374",
-              id: "5364",
-              model: "asdg",
-              price: 325423,
-              storage: "afjgnr",
-            };
-            editData("5364", data);
-          }}
-        >
-          EDIT
-        </button>
+        <NavLink to={"new"}>Add new phone</NavLink>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Color</th>
-            <th>Price</th>
-            <th>Storage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((phone) => {
-            const { brand, color, id, model, price, storage } = phone;
-            return (
-              <>
-                <tr key={id}>
-                  <td>{brand}</td>
-                  <td>{model}</td>
-                  <td>{storage}</td>
-                  <td>{color}</td>
-                  <td>{price}</td>
-                </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Storage</th>
+              <th>Color</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((phone) => {
+              const { brand, color, id, model, price, storage } = phone;
+              return (
+                <>
+                  <tr key={id}>
+                    <td>{brand}</td>
+                    <td>{model}</td>
+                    <td>{storage}</td>
+                    <td>{color}</td>
+                    <td>{price}</td>
+                    <td>
+                    <span
+                      onClick={() => deleteData(id)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      X     
+                      </span>
+
+                      <span
+                      onClick={() => {
+                        // Navigate to edit page with phone ID
+                        navigate(`/phones/edit/${id}`);
+                      }}
+                      style={{ cursor: "pointer", marginLeft: "10px" }}
+                    >
+                      Edit
+                    </span>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <button onClick={() => deleteData("5364")}>Delete item</button>
+      <button
+        onClick={() => {
+          const data = {
+            brand: "ofvirngourehgoi",
+            color: "asd",
+            id: "5364",
+            model: "asdg",
+            price: 325423,
+            storage: "afjgnr",
+          };
+          editData("5364", data);
+        }}
+      >
+        Edit data
+      </button>
     </>
   );
 };
