@@ -12,6 +12,7 @@ import Glovo from "../components/glovo";
 import Form from "../components/form";
 import Vjezba1 from "./vjezba-1";
 import Phones from "./phones";
+import List from "./list";
 
 export const vjezbeArr = [
   { label: "Berries vjezba", url: "/Berries", element: <Berries /> },
@@ -29,6 +30,7 @@ export const vjezbeArr = [
   { label: "Form", url: "/Form", element: <Form /> },
   { label: "Vjezba1", url: "/Vjezba1", element: <Vjezba1 /> },
   { label: "Phones", url: "/Phones", element: <Phones /> },
+  { label: "List", url: "/List", element: <List /> },
 ];
 
 const Vjezbe = () => {

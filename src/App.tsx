@@ -22,6 +22,7 @@ import Form from "./components/form";
 import Vjezba1 from "./pages/vjezba-1";
 import Phones from "./pages/phones";
 import PhonesCreate from "./pages/phones-create";
+import List from "./pages/list";
 
 const App = () => {
   return (
@@ -52,10 +53,11 @@ const App = () => {
           <Route path="Form" element={<Form />}></Route>
           <Route path="Vjezba1" element={<Vjezba1 />}></Route>
           <Route path="phones" element={<Phones />} />
-          <Route path="phones">     
+          <Route path="phones">
             <Route index element={<Phones />} />
             <Route path="new" element={<PhonesCreate />} />
           </Route>
+          <Route path="List" element={<List />}></Route>
         </Routes>
 
         <Layout>

@@ -1,0 +1,51 @@
+.spotify {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.spotify__list,
+.spotify__favorites {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+.spotify__list__item,
+.spotify__favorites__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.spotify__list__item button,
+.spotify__favorites__item button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.spotify__list__item button:hover,
+.spotify__favorites__item button:hover {
+  background-color: #f0f0f0;
+}
+
+.spotify__list__item > div,
+.spotify__favorites__item > div {
+  flex: 1;
+}
+
+.spotify__list__item > div > div,
+.spotify__favorites__item > div > div {
+  margin-bottom: 5px;
+}
+
+.spotify__list__item > div > div:last-child,
+.spotify__favorites__item > div > div:last-child {
+  color: #888;
+}
