@@ -100,22 +100,22 @@ const Phones = () => {
                     <td>{color}</td>
                     <td>{price}</td>
                     <td>
-                    <span
-                      onClick={() => deleteData(id)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      X     
+                      <span
+                        onClick={() => deleteData(id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        X
                       </span>
 
                       <span
-                      onClick={() => {
-                        // Navigate to edit page with phone ID
-                        navigate(`/phones/edit/${id}`);
-                      }}
-                      style={{ cursor: "pointer", marginLeft: "10px" }}
-                    >
-                      Edit
-                    </span>
+                        onClick={() => {
+                          // Navigate to edit page with phone ID
+                          navigate(`/phones/${id}`);
+                        }}
+                        style={{ cursor: "pointer", marginLeft: "10px" }}
+                      >
+                        Edit
+                      </span>
                     </td>
                   </tr>
                 </>

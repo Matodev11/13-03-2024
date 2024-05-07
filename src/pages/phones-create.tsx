@@ -3,7 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { PhoneType } from "./phones";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const schema = yup.object().shape({
   brand: yup.string().required("Brand name is required"),
@@ -19,16 +20,54 @@ const schema = yup.object().shape({
 
 type FormValues = Omit<PhoneType, "id">;
 
-const PhonesCreate = () => {
+type Props = {
+  isEdit: boolean;
+};
+
+const PhonesCreate = ({ isEdit }: Props) => {
   const navigate = useNavigate();
+  const { id } = useParams() as { id: string };
+  const [data, setData] = useState<PhoneType>();
+
+  const getData = (id: string) => {
+    fetch(`http://localhost:3000/phones/${id}`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        console.log(res);
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    if (isEdit) {
+      getData(id);
+    }
+  }, []);
 
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (isEdit && data) {
+      const defaultValues: PhoneType = {
+        ...data,
+      };
+      reset(defaultValues);
+    }
+  }, [reset, data]);
 
   const putData = (values: PhoneType) => {
     fetch("http://localhost:3000/phones", {
@@ -52,14 +91,39 @@ const PhonesCreate = () => {
       });
   };
 
+  const editData = (id: string, values: PhoneType) => {
+    fetch(`http://localhost:3000/phones/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert(res);
+        }
+      })
+      .then(() => {
+        getData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
     const values: PhoneType = {
       ...data,
-      id: uuidv4(),
+      id: isEdit ? id : uuidv4(),
     };
-
-    putData(values);
+    if (isEdit) {
+      editData(id, values);
+    } else {
+      putData(values);
+    }
   };
 
   return (
@@ -135,7 +199,9 @@ const PhonesCreate = () => {
             <p className="field__validation">{errors.price.message}</p>
           )}
         </div>
-        <button color="blue">Submit</button>
+        <button color="blue">
+          Submit {isEdit ? "Edit phone" : "cREATE NEW"}
+        </button>
       </form>
     </>
   );
